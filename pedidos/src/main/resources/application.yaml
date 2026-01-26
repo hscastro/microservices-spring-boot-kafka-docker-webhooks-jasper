@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: pedidos
+
+  datasource:
+    url: jdbc:postgresql://localhost:5555/icompraspedidos
+    username: postgres
+    password: postgres
+    drive-class-name: org.postresql.Driver
+  jpa:
+    database-plataform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8083
