@@ -17,7 +17,7 @@ public class Cliente {
     private String nome;
 
     @Column(name = "cpf", nullable = false, length = 11)
-    private String cp;
+    private String cpf;
 
     @Column(name = "logradouro", length = 100)
     private String logradouro;
