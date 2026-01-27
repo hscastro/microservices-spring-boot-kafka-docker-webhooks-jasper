@@ -4,12 +4,12 @@ import com.hscastro.icompras.pedidos.controller.dto.ItemPedidoDTO;
 import com.hscastro.icompras.pedidos.controller.dto.NovoPedidoDTO;
 import com.hscastro.icompras.pedidos.model.ItemPedido;
 import com.hscastro.icompras.pedidos.model.Pedido;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import com.hscastro.icompras.pedidos.model.enums.StatusPedido;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -26,7 +26,18 @@ public interface PedidoMapper {
         return dtos.stream().map(ITEM_PEDIDO_MAPPER::map).toList();
     }
 
-    private static BigDecimal calcularTotal(Pedido pedido){
-        return null;
+    @AfterMapping
+    default void afterMapping(@MappingTarget Pedido pedido){
+        pedido.setStatus(StatusPedido.REALIZADO);
+        pedido.setDataPedido(LocalDateTime.now());
+        var total = calcularValorTotal(pedido);
+        pedido.setTotal(total);
+
+        pedido.getItens().forEach(item -> item.setPedido(pedido));
+    }
+    private static BigDecimal calcularValorTotal(Pedido pedido) {
+        return pedido.getItens().stream().map(item ->
+            item.getValorUnitario().multiply(BigDecimal.valueOf(item.getQuantidade()))
+        ).reduce(BigDecimal.ZERO, BigDecimal::add).abs();
     }
 }

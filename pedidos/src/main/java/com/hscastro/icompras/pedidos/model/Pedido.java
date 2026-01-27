@@ -44,8 +44,8 @@ public class Pedido {
     private String codigoRastreio;
 
     @Transient
-    private DadosPagamentoDTO dadosPagamentoDTO;
+    private DadosPagamento dadosPagamentoDTO;
 
-    @OneToMany(mappedBy = "codigoPedido")
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 }
