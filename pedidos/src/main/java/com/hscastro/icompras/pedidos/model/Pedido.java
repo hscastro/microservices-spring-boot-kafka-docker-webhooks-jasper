@@ -1,6 +1,5 @@
 package com.hscastro.icompras.pedidos.model;
 
-import com.hscastro.icompras.pedidos.model.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +7,9 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import com.hscastro.icompras.pedidos.controller.dto.DadosPagamentoDTO;
+import com.hscastro.icompras.pedidos.model.enums.StatusPedido;
 
 @Entity
 @Table(name = "pedidos")
@@ -40,4 +42,10 @@ public class Pedido {
 
     @Column(name = "codigo_rastreio")
     private String codigoRastreio;
+
+    @Transient
+    private DadosPagamentoDTO dadosPagamentoDTO;
+
+    @OneToMany(mappedBy = "codigoPedido")
+    private List<ItemPedido> itens;
 }
