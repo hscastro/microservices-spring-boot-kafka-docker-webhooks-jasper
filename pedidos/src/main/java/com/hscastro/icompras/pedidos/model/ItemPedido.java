@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 public class ItemPedido {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;

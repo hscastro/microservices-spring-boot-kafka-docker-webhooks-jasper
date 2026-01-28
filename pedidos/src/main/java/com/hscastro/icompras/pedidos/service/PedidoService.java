@@ -27,7 +27,7 @@ public class PedidoService {
         return pedido;
     }
 
-    public Optional<Pedido> buscarPedidoPorId(Long codigo){
-        return pedidoRepository.findById(codigo);
-    }
+//    public Optional<Pedido> buscarPedidoPorId(Long codigo){
+//        return pedidoRepository.findById(codigo);
+//    }
 }
