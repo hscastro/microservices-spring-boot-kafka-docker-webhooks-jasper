@@ -21,9 +21,13 @@ public class PedidoService {
         this.itemPedidoRepository = itemPedidoRepository;
         this.pedidoValidator = pedidoValidator;
     }
-    public Pedido criarPedido(Pedido pedido){ return pedidoRepository.save(pedido);}
-
-    public Optional<Pedido> buscarPedidoPorId(Long codigo){
-        return pedidoRepository.findById(codigo);
+    public Pedido criarPedido(Pedido pedido){
+        pedidoRepository.save(pedido);
+        itemPedidoRepository.saveAll(pedido.getItens());
+        return pedido;
     }
+
+//    public Optional<Pedido> buscarPedidoPorId(Long codigo){
+//        return pedidoRepository.findById(codigo);
+//    }
 }

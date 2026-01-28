@@ -17,6 +17,7 @@ import com.hscastro.icompras.pedidos.model.enums.StatusPedido;
 @Setter
 @NoArgsConstructor
 public class Pedido {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
@@ -44,8 +45,8 @@ public class Pedido {
     private String codigoRastreio;
 
     @Transient
-    private DadosPagamentoDTO dadosPagamentoDTO;
+    private DadosPagamento dadosPagamento;
 
-    @OneToMany(mappedBy = "codigoPedido")
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 }
