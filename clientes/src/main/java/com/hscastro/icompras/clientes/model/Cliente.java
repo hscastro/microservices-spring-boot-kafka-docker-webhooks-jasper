@@ -2,11 +2,12 @@ package com.hscastro.icompras.clientes.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-@Data
 @Entity
 @Table(name = "clientes")
+@Data
+@NoArgsConstructor
 public class Cliente {
 
     @Id

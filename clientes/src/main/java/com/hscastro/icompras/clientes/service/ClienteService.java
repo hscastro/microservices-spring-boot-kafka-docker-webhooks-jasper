@@ -19,7 +19,7 @@ public class ClienteService {
         clienteRepository.save(cliente);
     }
 
-    public Optional<Cliente> findProdutoById(Long codigo){
+    public Optional<Cliente> obterDados(Long codigo){
         return clienteRepository.findById(codigo);
     }
 

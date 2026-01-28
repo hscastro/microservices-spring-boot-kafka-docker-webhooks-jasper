@@ -2,13 +2,14 @@ package com.hscastro.icompras.produtos.controller;
 
 import com.hscastro.icompras.produtos.model.Produto;
 import com.hscastro.icompras.produtos.service.ProdutoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.util.InternalApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("produtos")
-@RequiredArgsConstructor
+@RequestMapping("/api/v1/produtos")
 public class ProdutoController {
 
     private final ProdutoService service;
@@ -18,15 +19,16 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> create(@RequestBody Produto produto){
+    public ResponseEntity<Produto> create(@Valid @RequestBody Produto produto){
         service.salvar(produto);
         return ResponseEntity.ok(produto);
     }
 
     @GetMapping
     public ResponseEntity<Produto> obterDados(@PathVariable("codigo") Long codigo){
-        return service.findProdutoById(codigo)
-                .map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return service.obterDados(codigo)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }

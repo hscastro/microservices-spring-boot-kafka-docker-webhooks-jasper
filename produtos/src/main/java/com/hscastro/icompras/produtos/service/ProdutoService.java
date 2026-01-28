@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Service
 public class ProdutoService {
+
     private final ProdutoRepository produtoRepository;
 
     public ProdutoService(ProdutoRepository produtoRepository){
@@ -19,7 +20,7 @@ public class ProdutoService {
         produtoRepository.save(produto);
     }
 
-    public Optional<Produto> findProdutoById(Long codigo){
+    public Optional<Produto> obterDados(Long codigo){
         return produtoRepository.findById(codigo);
     }
 
