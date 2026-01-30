@@ -2,11 +2,14 @@ package com.hscastro.icompras.clientes.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "clientes")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Cliente {
 
@@ -28,6 +31,9 @@ public class Cliente {
 
     @Column(name = "bairro", length = 100)
     private String bairro;
+
+    @Column(name = "cidade", length = 100)
+    private String cidade;
 
     @Column(name = "email", length = 150)
     private String email;
