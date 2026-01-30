@@ -5,6 +5,7 @@ import com.hscastro.icompras.pedidos.client.ClienteClient;
 import com.hscastro.icompras.pedidos.client.ProdutoClient;
 import com.hscastro.icompras.pedidos.client.representation.ClienteRepresentation;
 import com.hscastro.icompras.pedidos.client.representation.ProdutoRepresentation;
+import com.hscastro.icompras.pedidos.exceptions.ValidationException;
 import com.hscastro.icompras.pedidos.model.ItemPedido;
 import com.hscastro.icompras.pedidos.model.Pedido;
 import feign.FeignException;
@@ -36,6 +37,8 @@ public class PedidoValidator {
             log.info("Produto de codigo {} encontrado {}", produto.codigo(), produto.nome());
         }catch (FeignException.NotFound e){
             log.error("Produto não encontrado!");
+            var message = String.format("Produto de codigo d% não encontrado.", item.getCodigoProduto());
+            throw new ValidationException("codigoProduto", message);
         }
     }
 
@@ -46,6 +49,8 @@ public class PedidoValidator {
             log.info("Cliente de codigo {} encontrado {}", cliente.codigo(), cliente.nome());
         }catch (FeignException.NotFound e){
             log.error("Cliente não encontrado!");
+            var message = String.format("Cliente de codigo d% não encontrado.", codigoCliente);
+            throw new ValidationException("codigoCliente", message);
         }
     }
 }
