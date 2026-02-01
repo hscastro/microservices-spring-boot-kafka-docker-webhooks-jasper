@@ -1,0 +1,46 @@
+## 📦 Visão Geral do Projeto
+
+Este projeto foi desenvolvido para explorar, na prática, conceitos e tecnologias amplamente utilizados em arquiteturas modernas e sistemas distribuídos. Ao longo da implementação, você terá contato com diferentes abordagens, ferramentas e padrões adotados no mercado por empresas de grande porte.
+Arquitetura de Microservices com Spring Boot, Webhooks, PostgreSQL e Apache Kafka
+
+### 🧩 Arquitetura de Microsserviços
+
+A arquitetura utilizada neste projeto foi uma abordagem na qual você irá conhecer como sistemas podem ser divididos em serviços menores e autônomos, entendendo como essa estratégia favorece crescimento independente, resiliência e manutenção. Também serão discutidos os principais obstáculos desse modelo, como orquestração, observabilidade e comunicação entre serviços, especialmente quando comparado a aplicações monolíticas.
+
+### 🚀 Spring Boot
+
+O projeto utiliza Spring Boot para a criação de aplicações desacopladas, performáticas e prontas para produção. Você aprenderá a tirar proveito de suas facilidades de configuração, inicialização rápida e integração com outros componentes do ecossistema Spring.
+
+### 🐳 Docker
+
+A conteinerização é aplicada para padronizar ambientes e facilitar a execução de serviços externos necessários à arquitetura. O uso do Docker reflete práticas reais do mercado, tornando o setup mais simples, reproduzível e próximo de cenários corporativos.
+
+
+### 📡 Apache Kafka
+
+Será abordado o uso do Kafka como plataforma de mensageria e streaming de eventos. Você entenderá como estruturar tópicos, trabalhar com partições, produzir e consumir mensagens, além de garantir escalabilidade e comunicação assíncrona entre microsserviços.
+
+
+### 🗄️ Bancos de Dados por Serviço
+
+Cada microsserviço possui seu próprio banco de dados, reforçando o desacoplamento e o isolamento de responsabilidades. Essa abordagem ajuda a evitar dependências excessivas, melhora a autonomia dos serviços e contribui para uma arquitetura mais flexível e confiável.
+
+### 🔄 Arquitetura Orientada a Eventos
+
+O projeto adota conceitos de Event-Driven Architecture, permitindo que os serviços reajam a eventos de forma desacoplada. Você aprenderá a aplicar padrões comuns em sistemas distribuídos que exigem alta escalabilidade e baixo acoplamento.
+
+### 🌐 Webhooks
+
+A comunicação com sistemas externos é realizada por meio de webhooks, possibilitando o disparo automático de eventos via HTTP. Serão demonstradas boas práticas para garantir segurança, confiabilidade e integração eficiente entre diferentes plataformas.
+
+### ☁️ Armazenamento em Cloud com MinIO
+
+#Será utilizado o MinIO como solução de armazenamento de objetos compatível com o padrão S3. Você aprenderá a lidar com upload, download e gerenciamento de arquivos, um recurso essencial em aplicações modernas que manipulam grandes volumes de dados.
+
+### 📊 Jasper Reports
+
+##O projeto inclui a geração de relatórios ricos e personalizáveis utilizando Jasper Reports. Você verá como integrar relatórios aos microsserviços, entregando informações organizadas e profissionais para o usuário final.
+
+---
+
+
