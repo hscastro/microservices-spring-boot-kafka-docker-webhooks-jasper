@@ -1,15 +1,14 @@
 package com.hscastro.icompras.pedidos.validator;
 
-
 import com.hscastro.icompras.pedidos.client.ClienteClient;
 import com.hscastro.icompras.pedidos.client.ProdutoClient;
 import com.hscastro.icompras.pedidos.client.representation.ClienteRepresentation;
 import com.hscastro.icompras.pedidos.client.representation.ProdutoRepresentation;
 import com.hscastro.icompras.pedidos.exceptions.ValidationException;
 import com.hscastro.icompras.pedidos.model.ItemPedido;
-import com.hscastro.icompras.pedidos.model.Pedido;
+import lombok.extern.slf4j.Slf4j;import com.hscastro.icompras.pedidos.model.Pedido;
 import feign.FeignException;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Component;
 
 @Component

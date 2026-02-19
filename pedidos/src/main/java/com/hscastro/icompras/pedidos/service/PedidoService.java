@@ -8,6 +8,8 @@ import com.hscastro.icompras.pedidos.validator.PedidoValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class PedidoService {
 
@@ -41,7 +43,7 @@ public class PedidoService {
         itemPedidoRepository.saveAll(pedido.getItens());
     }
 
-//    public Optional<Pedido> buscarPedidoPorId(Long codigo){
-//        return pedidoRepository.findById(codigo);
-//    }
+    public Optional<Pedido> buscarPedidoPorId(Long codigo){
+           return pedidoRepository.findById(codigo);
+    }
 }

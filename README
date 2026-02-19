@@ -35,12 +35,38 @@ A comunicação com sistemas externos é realizada por meio de webhooks, possibi
 
 ### ☁️ Armazenamento em Cloud com MinIO
 
-#Será utilizado o MinIO como solução de armazenamento de objetos compatível com o padrão S3. Você aprenderá a lidar com upload, download e gerenciamento de arquivos, um recurso essencial em aplicações modernas que manipulam grandes volumes de dados.
+Será utilizado o MinIO como solução de armazenamento de objetos compatível com o padrão S3. Você aprenderá a lidar com upload, download e gerenciamento de arquivos, um recurso essencial em aplicações modernas que manipulam grandes volumes de dados.
 
 ### 📊 Jasper Reports
 
-##O projeto inclui a geração de relatórios ricos e personalizáveis utilizando Jasper Reports. Você verá como integrar relatórios aos microsserviços, entregando informações organizadas e profissionais para o usuário final.
+O projeto inclui a geração de relatórios ricos e personalizáveis utilizando Jasper Reports. Você verá como integrar relatórios aos microsserviços, entregando informações organizadas e profissionais para o usuário final.
 
----
+📌 Benefícios dessa arquitetura
+
+✅ Baixo acoplamento
+
+Serviços não dependem uns dos outros diretamente.
+
+✅ Alta escalabilidade
+
+Novos consumidores podem ser adicionados sem alterar quem publica.
+
+✅ Resiliência
+
+Falha em Produtos não derruba Pedidos.
+
+✅ Observabilidade
+
+Eventos permitem:
+
+Auditoria
+
+Replay
+
+Rastreamento (traceId)
+
+✅ Evolução fácil
+
+Ex: adicionar um microsserviço de Pagamentos sem tocar nos existentes.
 
 
