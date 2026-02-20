@@ -1,6 +1,7 @@
 package com.hscastro.icompras.pedidos.controller;
 
 
+import com.hscastro.icompras.pedidos.controller.dto.AdicionarNovoPagamentoDTO;
 import com.hscastro.icompras.pedidos.controller.dto.NovoPedidoDTO;
 import com.hscastro.icompras.pedidos.controller.mappers.PedidoMapper;
 import com.hscastro.icompras.pedidos.exceptions.ErroResposta;
@@ -34,4 +35,18 @@ public class PedidoController {
             return ResponseEntity.badRequest().body(erro);
         }
     }
+
+    @PostMapping("pagamentos")
+    public ResponseEntity<Object> adicionaNovoPagamento(@RequestBody AdicionarNovoPagamentoDTO novoPagamentoDTO){
+        try {
+            pedidoService.adicionaNovoPagamento(novoPagamentoDTO.codigoPedido(), novoPagamentoDTO.dadosCartao(), novoPagamentoDTO.tipo());
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            var erro = new ErroResposta("Item não encontrado", "codigoPedido", e.getMessage());
+            return ResponseEntity.badRequest().body(erro);
+        }
+
+    }
+
+
 }

@@ -1,8 +1,11 @@
 package com.hscastro.icompras.pedidos.service;
 
 import com.hscastro.icompras.pedidos.client.ServicoBancarioClient;
+import com.hscastro.icompras.pedidos.exceptions.ItemNaoEncontradoException;
+import com.hscastro.icompras.pedidos.model.DadosPagamento;
 import com.hscastro.icompras.pedidos.model.Pedido;
 import com.hscastro.icompras.pedidos.model.enums.StatusPedido;
+import com.hscastro.icompras.pedidos.model.enums.TipoPagamento;
 import com.hscastro.icompras.pedidos.repositories.ItemPedidoRepository;
 import com.hscastro.icompras.pedidos.repositories.PedidoRepository;
 import com.hscastro.icompras.pedidos.validator.PedidoValidator;
@@ -70,5 +73,28 @@ public class PedidoService {
             pedido.setObservacoes(observacoes);
         }
         pedidoRepository.save(pedido);
+    }
+
+    public void adicionaNovoPagamento(Long codigoPedido, String dadosCartao, TipoPagamento tipoPagto){
+        var pedidoEncontrado = pedidoRepository.findById(codigoPedido);
+
+        if(pedidoEncontrado.isEmpty()){
+            throw new ItemNaoEncontradoException("Pedido não encontrado para o código informado.");
+        }
+        var pedido = pedidoEncontrado.get();
+
+        DadosPagamento dadosPagamento = new DadosPagamento();
+        dadosPagamento.setTipoPagamento(tipoPagto);
+        dadosPagamento.setDados(dadosCartao);
+
+        pedido.setDadosPagamento(dadosPagamento);
+        pedido.setStatus(StatusPedido.REALIZADO);
+        pedido.setObservacoes("Novo pagamento realizado, aguardando o novo processamento");
+
+        pedidoRepository.save(pedido);
+
+        String novaChavePagto = servicoBancarioClient.solicitarPagamento(pedido);
+        pedido.setChavePagamento(novaChavePagto);
+
     }
 }
